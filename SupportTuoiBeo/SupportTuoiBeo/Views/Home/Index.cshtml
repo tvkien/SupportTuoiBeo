@@ -2,36 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model UserDetailsViewModel
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <label> Select by Month</label>
+    @Html.DropDownListFor(x => x.MonthSelected, new SelectList(Enum.GetValues(typeof(SupportTuoiBeo.Data.EnumThang))))
+    <input type="submit" value="Filter" />
+}
+
 <div class="text-center">
     <table class="table">
         <caption>List of users</caption>
         <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Ngay</th>
+                <th scope="col">Thang</th>
                 <th scope="col">Ma KH</th>
                 <th scope="col">Tinh</th>
                 <th scope="col">PHAI THANH TOAN</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>AAA</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>AAA</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>AAA</td>
-            </tr>
+            @foreach (var row in Model.UserDetails)
+            {
+                <tr>
+                    <th scope="row">@row.Id</th>
+                    <td>@row.Ngay</td>
+                    <td>@row.Thang</td>
+                    <td>@row.MaKH</td>
+                    <td>@row.Tinh</td>
+                    <td>@string.Format("{0:0,0}", @row.TienThanhToan)</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

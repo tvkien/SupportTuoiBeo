@@ -4,8 +4,9 @@ namespace SupportTuoiBeo.Data
 {
     public enum EnumThang
     {
+        All = 0,
         [Description("Thang 01")]
-        Thang01,
+        Thang01 = 1,
         [Description("Thang 02")]
         Thang02,
         [Description("Thang 03")]
