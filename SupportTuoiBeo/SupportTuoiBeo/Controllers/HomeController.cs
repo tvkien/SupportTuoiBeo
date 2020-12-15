@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SupportTuoiBeo.Data;
@@ -55,6 +52,77 @@ namespace SupportTuoiBeo.Controllers
             }
 
             return View(userDetailsViewModel);
+        }
+
+        public IActionResult Total()
+        {
+            var totals = new List<TotalViewModel>();
+            var listUserDetail = new List<UserDetails>();
+
+            using (var db = new ApplicationDbContext())
+            {
+                listUserDetail = db.UserDetails.ToList();
+            }
+
+            var listMaKH = listUserDetail.GroupBy(x => x.MaKH).Select(x => x.Key);
+
+            foreach(var maKh in listMaKH)
+            {
+                var totalView = new TotalViewModel
+                {
+                    MaKH = maKh,
+                    Tinh = listUserDetail.FirstOrDefault(x => x.MaKH == maKh).Tinh
+                };
+                var listOneKH = listUserDetail.Where(x => x.MaKH == maKh).ToList();
+                foreach(var one in listOneKH)
+                {
+                    switch (one.Thang)
+                    {
+                        case EnumThang.Thang01:
+                            totalView.DoanhThuThang1 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang02:
+                            totalView.DoanhThuThang2 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang03:
+                            totalView.DoanhThuThang3 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang04:
+                            totalView.DoanhThuThang4 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang05:
+                            totalView.DoanhThuThang5 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang06:
+                            totalView.DoanhThuThang6 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang07:
+                            totalView.DoanhThuThang7 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang08:
+                            totalView.DoanhThuThang8 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang09:
+                            totalView.DoanhThuThang9 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang10:
+                            totalView.DoanhThuThang10 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang11:
+                            totalView.DoanhThuThang11 += one.TienThanhToan;
+                            break;
+                        case EnumThang.Thang12:
+                            totalView.DoanhThuThang12 += one.TienThanhToan;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                totals.Add(totalView);
+            }
+
+            return View(totals);
         }
     }
 }

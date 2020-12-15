@@ -1,0 +1,54 @@
+﻿@model List<TotalViewModel>
+@{
+    ViewData["Title"] = "Total";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="text-center" style="width: 1500px;">
+    <table class="table">
+        <caption>Total 2020</caption>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ma KH</th>
+                <th scope="col">Tinh</th>
+                <th scope="col">Doanh Thu Thang 1</th>
+                <th scope="col">Doanh Thu Thang 2</th>
+                <th scope="col">Doanh Thu Thang 3</th>
+                <th scope="col">Doanh Thu Thang 4</th>
+                <th scope="col">Doanh Thu Thang 5</th>
+                <th scope="col">Doanh Thu Thang 6</th>
+                <th scope="col">Doanh Thu Thang 7</th>
+                <th scope="col">Doanh Thu Thang 8</th>
+                <th scope="col">Doanh Thu Thang 9</th>
+                <th scope="col">Doanh Thu Thang 10</th>
+                <th scope="col">Doanh Thu Thang 11</th>
+                <th scope="col">Doanh Thu Thang 12</th>
+                <th scope="col">Tong Nam 2020</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model)
+            {
+                <tr>
+                    <th scope="row">@row.Id</th>
+                    <td>@row.MaKH</td>
+                    <td>@row.Tinh</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang1)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang2)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang3)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang4)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang5)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang6)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang7)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang8)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang9)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang10)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang11)</td>
+                    <td>@string.Format("{0:0,0}", @row.DoanhThuThang12)</td>
+                    <td>@string.Format("{0:0,0}", @row.Total)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
