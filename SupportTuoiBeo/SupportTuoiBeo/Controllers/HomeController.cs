@@ -70,11 +70,13 @@ namespace SupportTuoiBeo.Controllers
             }
 
             var listMaKH = listUserDetail.GroupBy(x => x.MaKH).Select(x => x.Key);
+            var index = 1;
 
             foreach(var maKh in listMaKH)
             {
                 var totalView = new TotalViewModel
                 {
+                    Id = index,
                     MaKH = maKh,
                     Tinh = listUserDetail.FirstOrDefault(x => x.MaKH == maKh).Tinh
                 };
@@ -125,6 +127,7 @@ namespace SupportTuoiBeo.Controllers
                 }
 
                 totals.Add(totalView);
+                index++;
             }
 
             return View(totals);

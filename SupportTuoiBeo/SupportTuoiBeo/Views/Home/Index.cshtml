@@ -4,13 +4,24 @@
 
 @model UserDetailsViewModel
 
-@using (Html.BeginForm("Index", "Home", FormMethod.Get))
-{
-    <label> Select by Month</label>
-    @Html.DropDownListFor(x => x.MonthSelected, new SelectList(Enum.GetValues(typeof(SupportTuoiBeo.Data.EnumThang))))
-    <input type="submit" value="Filter" />
-    <label> Total @Model.MonthSelected : @string.Format("{0:0,0}", Model.TotalMonthSelected)</label>
-}
+
+
+    <div class="input-group">
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+            <label> Select by Month</label>
+            @Html.DropDownListFor(x => x.MonthSelected, new SelectList(Enum.GetValues(typeof(SupportTuoiBeo.Data.EnumThang))))
+            <input type="submit" value="Filter" />
+            <label> Total @Model.MonthSelected : @string.Format("{0:0,0}", Model.TotalMonthSelected)</label>
+        }
+
+        <span class="input-group-prepend">
+            <div class="input-group-text bg-transparent border-right-0">
+                <i class="fa fa-search"></i>
+            </div>
+        </span>
+    </div>
 
 <div class="text-center">
     <table class="table">
