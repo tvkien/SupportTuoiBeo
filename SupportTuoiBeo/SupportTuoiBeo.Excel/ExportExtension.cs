@@ -188,7 +188,7 @@ namespace SupportTuoiBeo.Excel
 
             if (index == 2)
             {
-                userDetail.MaKH = value;
+                userDetail.MaKH = value?.ToLower();
                 Console.WriteLine("Ma KH: " + value);
             }
 
