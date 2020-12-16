@@ -51,6 +51,11 @@ namespace SupportTuoiBeo.Controllers
                 }
             }
 
+            foreach(var user in userDetailsViewModel.UserDetails)
+            {
+                userDetailsViewModel.TotalMonthSelected += user.TienThanhToan;
+            }
+
             return View(userDetailsViewModel);
         }
 

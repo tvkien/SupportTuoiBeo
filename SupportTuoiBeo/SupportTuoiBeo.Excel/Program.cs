@@ -1,5 +1,6 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using EnumsNET;
 using SupportTuoiBeo.Data.Contexts;
 using SupportTuoiBeo.Data.Entities;
 using System;
@@ -15,11 +16,20 @@ namespace SupportTuoiBeo.Excel
         {
             Console.WriteLine("Hello World!");
 
-            const string fileName = @"D:\Kien - Copy.xlsx";
+            const string fileName = @"D:\QLBH-2020-Kien-Update-Convert.xlsx";
 
-            var userDetails = GetUserDetails(fileName, "tháng 12", Data.EnumThang.Thang12);
+            foreach (Data.EnumThang thang in (Data.EnumThang[])Enum.GetValues(typeof(Data.EnumThang)))
+            {
+                if(thang == Data.EnumThang.All)
+                {
+                    continue;
+                }
+                string description = thang.AsString(EnumFormat.Description);
 
-            InsertDatabase(userDetails);
+                var userDetails = GetUserDetails(fileName, description, thang);
+
+                InsertDatabase(userDetails);
+            }
 
             Console.ReadKey();
         }

@@ -5,29 +5,29 @@ namespace SupportTuoiBeo.Data
     public enum EnumThang
     {
         All = 0,
-        [Description("Thang 01")]
+        [Description("tháng 01")]
         Thang01 = 1,
-        [Description("Thang 02")]
+        [Description("tháng 02")]
         Thang02,
-        [Description("Thang 03")]
+        [Description("tháng 03")]
         Thang03,
-        [Description("Thang 04")]
+        [Description("tháng 04")]
         Thang04,
-        [Description("Thang 05")]
+        [Description("tháng 05")]
         Thang05,
-        [Description("Thang 06")]
+        [Description("tháng 06")]
         Thang06,
-        [Description("Thang 07")]
+        [Description("tháng 07")]
         Thang07,
-        [Description("Thang 08")]
+        [Description("tháng 08")]
         Thang08,
-        [Description("Thang 09")]
+        [Description("tháng 09")]
         Thang09,
-        [Description("Thang 10")]
+        [Description("tháng 10")]
         Thang10,
-        [Description("Thang 11")]
+        [Description("tháng 11")]
         Thang11,
-        [Description("Thang 12")]
+        [Description("tháng 12")]
         Thang12
     }
 }

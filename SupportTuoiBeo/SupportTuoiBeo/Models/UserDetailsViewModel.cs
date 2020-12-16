@@ -9,5 +9,7 @@ namespace SupportTuoiBeo.Models
         public List<UserDetailViewModel> UserDetails { get; set; }
 
         public EnumThang MonthSelected { get; set; }
+
+        public long TotalMonthSelected { get; set; }
     }
 }

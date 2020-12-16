@@ -9,6 +9,7 @@
     <label> Select by Month</label>
     @Html.DropDownListFor(x => x.MonthSelected, new SelectList(Enum.GetValues(typeof(SupportTuoiBeo.Data.EnumThang))))
     <input type="submit" value="Filter" />
+    <label> Total @Model.MonthSelected : @string.Format("{0:0,0}", Model.TotalMonthSelected)</label>
 }
 
 <div class="text-center">
